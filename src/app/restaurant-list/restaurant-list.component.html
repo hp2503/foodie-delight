@@ -1,0 +1,23 @@
+<ul class="main-container">
+    <li *ngFor="let restaurant of restaurants">
+        <div class="card" style="width: 18rem;">
+            <img [src]="restaurant.image_url" class="card-img-top" alt="image not available">
+            <div class="card-body">
+                <h5 class="card-title">{{ restaurant.name }}</h5>
+                <p class="card-text">{{restaurant.description}}</p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">{{restaurant.caterers_name}}</li>
+                <li class="list-group-item">{{restaurant.phone}}</li>
+                <li class="list-group-item">{{restaurant.email}}</li>
+                <li class="list-group-item">{{restaurant.address}}</li>
+            </ul>
+            <div class="card-body restaurant-action">
+                <a href="#" class="card-link">{{"View menu"}}</a>
+                <button (click)="deleteRestaurant(restaurant.id)">Delete</button>
+                <button (click)="editRestaurant(restaurant.id)">Edit Details</button>
+            </div>
+        </div>
+    </li>
+</ul>
+<app-loader *ngIf="loader"></app-loader>

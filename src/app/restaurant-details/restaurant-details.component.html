@@ -1,0 +1,55 @@
+<div class="restaurant-details-form">
+  <form [formGroup]="restaurantDetails" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="name" class="form-label">Restaurant Name</label>
+      <input type="text" formControlName="name" class="form-control" id="name" placeholder="Enter restaurant name (e.g., Hardik Ka Dhaba)">
+      <div *ngIf="restaurantDetails.get('name')?.invalid && (restaurantDetails.get('name')?.dirty || restaurantDetails.get('name')?.touched)" class="text-danger">
+        <div *ngIf="restaurantDetails.get('name')?.errors?.['required']">Name is required.</div>
+        <div *ngIf="restaurantDetails.get('name')?.errors?.['pattern']">Invalid name format.</div>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label">Email address</label>
+      <input type="email" formControlName="email" class="form-control" id="email" placeholder="Enter contact email (e.g., hardikprashar25@gmail.com)">
+      <div *ngIf="restaurantDetails.get('email')?.invalid && (restaurantDetails.get('email')?.dirty || restaurantDetails.get('email')?.touched)" class="text-danger">
+        <div *ngIf="restaurantDetails.get('email')?.errors?.['required']">Email is required.</div>
+        <div *ngIf="restaurantDetails.get('email')?.errors?.['pattern']">Invalid email format.</div>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="phone" class="form-label">Phone</label>
+      <input type="tel" formControlName="phone" class="form-control" id="phone" placeholder="Enter phone number (e.g., +91-7888954253)">
+      <div *ngIf="restaurantDetails.get('phone')?.invalid && (restaurantDetails.get('phone')?.dirty || restaurantDetails.get('phone')?.touched)" class="text-danger">
+        <div *ngIf="restaurantDetails.get('phone')?.errors?.['required']">Phone number is required.</div>
+        <div *ngIf="restaurantDetails.get('phone')?.errors?.['pattern']">Invalid phone number format.</div>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="caterers_name" class="form-label">Caterer Name</label>
+      <input type="text" formControlName="caterers_name" class="form-control" id="caterers_name" placeholder="Enter Caterers Name (e.g., Hardik )">
+      <div *ngIf="restaurantDetails.get('caterers_name')?.invalid && (restaurantDetails.get('caterers_name')?.dirty || restaurantDetails.get('caterers_name')?.touched)" class="text-danger">
+        <div *ngIf="restaurantDetails.get('caterers_name')?.errors?.['required']">Caterer Name is required.</div>
+        <div *ngIf="restaurantDetails.get('caterers_name')?.errors?.['pattern']">Invalid caterer name format.</div>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="description" class="form-label">Description</label>
+      <input type="text" formControlName="description" class="form-control" id="description" placeholder="Enter Restaurant Specialisation (e.g., This restaurant is famous for... )">
+      <div *ngIf="restaurantDetails.get('description')?.invalid && (restaurantDetails.get('description')?.dirty || restaurantDetails.get('description')?.touched)" class="text-danger">
+        <div *ngIf="restaurantDetails.get('description')?.errors?.['required']">Description is required.</div>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="address" class="form-label">Address</label>
+      <input type="text" formControlName="address" class="form-control" id="address" placeholder="Specify address of restaurant (e.g. MHC, Sector 13, Chandigarh)">
+      <div *ngIf="restaurantDetails.get('address')?.invalid && (restaurantDetails.get('address')?.dirty || restaurantDetails.get('address')?.touched)" class="text-danger">
+        <div *ngIf="restaurantDetails.get('address')?.errors?.['required']">Address is required.</div>
+      </div>
+    </div>
+    <div class="mb-3 restaurant-submit">
+      <button *ngIf ="!restaurantEdit" type="submit" class="btn btn-primary" [disabled]="restaurantDetails.invalid">Add Restaurant</button>
+      <button *ngIf ="restaurantEdit" type="submit" class="btn btn-primary" [disabled]="restaurantDetails.invalid">Edit Restaurant</button>
+    </div>
+  </form>
+  <app-loader *ngIf="loader"></app-loader>
+</div>

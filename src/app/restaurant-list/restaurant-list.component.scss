@@ -1,0 +1,13 @@
+.main-container {
+    display: flex;
+    gap: 10px;
+    margin: 20px 0 0 10px;
+    list-style: none;
+    li:last-child{
+        padding-right: 20px;
+    }
+}
+.restaurant-action {
+    display: flex;
+    justify-content: space-between;
+}
